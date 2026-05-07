@@ -1,3 +1,4 @@
+import models.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -15,6 +16,16 @@ public class LoginTests extends TestBase {
         }
     }
 
+    @Test
+    public void loginSuccses1() {
+        User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitLogin();
+
+        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+        app.getHelperUser().clickOkButton();
+    }
 
     @Test
     public void loginSuccses() {
