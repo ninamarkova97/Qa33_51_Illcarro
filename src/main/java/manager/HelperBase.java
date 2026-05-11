@@ -39,4 +39,8 @@ public void pause(int time){
         List<WebElement> list = wd.findElements(locator);
         return list.size()>0;
     }
+    public String getErrorText() {
+        return wd.findElement(By.cssSelector("div.error")).getText();
+    }
+
 }
