@@ -93,18 +93,20 @@ public class HelperUser extends HelperBase {
         js.executeScript( "document.querySelector('#terms-of-use').click()");
 
     }
-    public void checkPolicyXY(){
-        WebElement label = wd.findElement(By.cssSelector("label[for='terms-of-use']"));
-        Rectangle rectangle = label.getRect();
-        int w = rectangle.getWidth();
+    public void checkPolicyXY() {
+        if (!wd.findElement(By.id("terms-of-use")).isSelected()) {
+            WebElement label = wd.findElement(By.cssSelector("label[for='terms-of-use']"));
+            Rectangle rectangle = label.getRect();
+            int w = rectangle.getWidth();
 
-        //Dimension size = wd.manage().window().getSize();
+            //Dimension size = wd.manage().window().getSize();
 
 
-        int xOffset = -w/2;
-        Actions actions = new Actions(wd);
+            int xOffset = -w / 2;
+            Actions actions = new Actions(wd);
 
-        actions.moveToElement(label,xOffset,0).click().release().perform();
+            actions.moveToElement(label, xOffset, 0).click().release().perform();
+        }
     }
     public boolean isErrorWrongEmail() {
         return isElementPresent(By.xpath("//*[text()='Wrong email format']"));
@@ -118,6 +120,12 @@ public class HelperUser extends HelperBase {
     }
 
 
+    public void login(User user) {
+        openLoginForm();
+        fillLoginForm(user);
+        submit();
+        clickOkButton();
     }
+}
 
 
