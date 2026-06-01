@@ -17,6 +17,8 @@ public class HelperUser extends HelperBase {
         type(By.id("email"), email);
         //type(By.id("password"), password);
         type(By.cssSelector("[formcontrolname = 'password']"), password);
+
+        //type(By.cssSelector("[formcontrolname = 'passwooord']"), password);
     }
 
     public void fillLoginForm(User user) {

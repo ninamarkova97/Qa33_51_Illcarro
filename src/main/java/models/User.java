@@ -1,10 +1,13 @@
 package models;
 
+
 public class User {
     private String name;
     private String lastName;
     private String email;
     private String password;
+
+
 
     public User setName(String name) {
         this.name = name;

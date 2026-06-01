@@ -1,3 +1,4 @@
+import manager.DataProviderUser;
 import models.User;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,8 +19,8 @@ public class RegistrationTests extends TestBase {
         }
     }
 
-    @Test
-    public void registrationSuccess() {
+    @Test(dataProvider = "dataRegistrationSuccess", dataProviderClass = DataProviderUser.class)
+    public void registrationSuccess(User user) {
         Random random = new Random();
         int i = random.nextInt(1000) + 1000;
         System.out.println(i);
@@ -27,9 +28,9 @@ public class RegistrationTests extends TestBase {
         int z = (int) ((System.currentTimeMillis() / 1000) % 3600);
 
         logger.info("Start test with name 'registrationSuccess'");
-        User user = new User().setName("Sona").setLastName("Mert").setEmail("mert" + z + "@gmail.com").setPassword("Mert123456!");
+        //User user = new User().setName("Sona").setLastName("Mert").setEmail("mert" + z + "@gmail.com").setPassword("Mert123456!");
 
-        logger.info("Test data --> Name: Sona, lastName: Mert, email:'mert" +z+"@gmail.com & password: Mert123456!");
+      //  logger.info("Test data --> Name: Sona, lastName: Mert, email:'mert" +z+"@gmail.com & password: Mert123456!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -40,11 +41,11 @@ public class RegistrationTests extends TestBase {
 
     }
 
-    @Test
-    public void registrationEmptyName() {
-        User user = new User().setName("").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert123456!");
+    @Test (dataProvider = "dataRegistrationEmptyName", dataProviderClass = DataProviderUser.class)
+    public void registrationEmptyName(User user) {
+     //User user = new User().setName("").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert123456!");
 
-        logger.info("Test data --> Name:, lastName: Mert, email:'mert@gmail.com & password: Mert123456!");
+       // logger.info("Test data --> Name:, lastName: Mert, email:'mert@gmail.com & password: Mert123456!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -55,10 +56,10 @@ public class RegistrationTests extends TestBase {
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
         logger.info("Assert check Yalla button is active");
     }
-    @Test
-    public void registrationEmptyLastName() {
-        User user = new User().setName("Sona").setLastName("").setEmail("mert@gmail.com").setPassword("Mert123456!");
-        logger.info("Test data --> Name: Sona, lastName: , email:'mert@gmail.com & password: Mert123456!");
+    @Test (dataProvider = "dataRegistrationEmptyLastName", dataProviderClass = DataProviderUser.class)
+    public void registrationEmptyLastName(User user) {
+      // User user = new User().setName("Sona").setLastName("").setEmail("mert@gmail.com").setPassword("Mert123456!");
+        //logger.info("Test data --> Name: Sona, lastName: , email:'mert@gmail.com & password: Mert123456!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -71,11 +72,11 @@ public class RegistrationTests extends TestBase {
 
     }
 
-    @Test
-    public void wrongEmailRegistration() {
-        User user = new User().setName("Sona").setLastName("Mert").setEmail("mertgmail.com").setPassword("Mert123456!");
+    @Test(dataProvider = "dataWrongEmailRegistration",dataProviderClass = DataProviderUser.class)
+    public void wrongEmailRegistration(User user) {
+      // User user = new User().setName("Sona").setLastName("Mert").setEmail("mertgmail.com").setPassword("Mert123456!");
 
-        logger.info("Test data --> Name: Sona, lastName: Mert, email:'mertgmail.com & password: Mert123456!");
+      //  logger.info("Test data --> Name: Sona, lastName: Mert, email:'mertgmail.com & password: Mert123456!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -91,11 +92,11 @@ public class RegistrationTests extends TestBase {
     }
 
 
-    @Test
-    public void registrationEmptyEmail() {
-        User user = new User().setName("Sona").setLastName("Mert").setEmail("").setPassword("Mert123456!");
+    @Test(dataProvider = "dataRegistrationEmptyEmail", dataProviderClass = DataProviderUser.class)
+    public void registrationEmptyEmail(User user) {
+       // User user = new User().setName("Sona").setLastName("Mert").setEmail("").setPassword("Mert123456!");
 
-        logger.info("Test data --> Name: Sona, lastName: Mert, email: & password: Mert123456!");
+        //logger.info("Test data --> Name: Sona, lastName: Mert, email: & password: Mert123456!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -107,15 +108,15 @@ public class RegistrationTests extends TestBase {
         logger.info("Assert check Yalla button is active");
     }
 
-    @Test
-    public void registrationWrongEmail() {
-        User user = new User()
-                .setName("Lisa")
-                .setLastName("Snow")
-                .setEmail("snowgmail.com")
-                .setPassword("Snow123456$");
+    @Test (dataProvider = "dataRegistrationWrongEmail", dataProviderClass = DataProviderUser.class)
+    public void registrationWrongEmail(User user) {
+        //User user = new User()
+//                .setName("Lisa")
+//                .setLastName("Snow")
+//                .setEmail("snowgmail.com")
+//                .setPassword("Snow123456$");
 
-        logger.info("Test data --> Name: Lisa, lastName: Snow, email:snowgmail.com & password: Snow123456$");
+      // logger.info("Test data --> Name: Lisa, lastName: Snow, email:snowgmail.com & password: Snow123456$");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -128,10 +129,10 @@ public class RegistrationTests extends TestBase {
         logger.info("Assert check Yalla button is active");
     }
 
-    @Test
-    public void registrationEmptyPassword() {
-        User user = new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("");
-        logger.info("Test data --> Name: Sona, lastName: Mert, email:mert@gmail.com & password: ");
+    @Test(dataProvider = "dataRegistrationEmptyPassword", dataProviderClass = DataProviderUser.class)
+    public void registrationEmptyPassword(User user) {
+       // User user = new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("");
+       //logger.info("Test data --> Name: Sona, lastName: Mert, email:mert@gmail.com & password: ");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
@@ -144,11 +145,11 @@ public class RegistrationTests extends TestBase {
     }
 
 
-    @Test
-    public void wrongPasswordRegistration() {
-        User user = new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert1!");
+    @Test(dataProvider = "dataWrongPasswordRegistration", dataProviderClass = DataProviderUser.class)
+    public void wrongPasswordRegistration(User user ) {
+       // User user = new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert1!");
 
-        logger.info("Test data --> Name: Sona, lastName: Mert, email:mert@gmail.com & password: Mert1!");
+        //logger.info("Test data --> Name: Sona, lastName: Mert, email:mert@gmail.com & password: Mert1!");
 
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);

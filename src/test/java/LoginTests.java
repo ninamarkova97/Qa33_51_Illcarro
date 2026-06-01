@@ -1,3 +1,4 @@
+import manager.DataProviderUser;
 import models.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -18,53 +19,53 @@ public class LoginTests extends TestBase {
         }
     }
 
-    @Test
-    public void loginSuccses1() {
-        User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
-        app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm(user);
-        app.getHelperUser().submit();
+//    @Test
+//    public void loginSuccses1() {
+//      //  User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
+//        app.getHelperUser().openLoginForm();
+//        app.getHelperUser().fillLoginForm(user);
+//        app.getHelperUser().submit();
+//
+//        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+//        //app.getHelperUser().clickOkButton();
+//    }
 
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-        //app.getHelperUser().clickOkButton();
-    }
-
-    @Test
-    public void loginSuccses() {
+    @Test (dataProvider = "loginSuccess", dataProviderClass = DataProviderUser.class)
+    public void loginSuccses(String email, String password) {
         logger.info("Start test with name succses");
-        logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123!'");
+
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("lolik@mail.ru", "Lolik123!");
+        app.getHelperUser().fillLoginForm(email, password);
+        app.getHelperUser().submit();
+
+//Assert -->if element with text "logged in succses" is present
+        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+         //app.getHelperUser().clickOkButton();
+        logger.info("Assert check is message 'Logged in success' ");
+    }
+
+    @Test(dataProvider = "loginModelSuccess", dataProviderClass = DataProviderUser.class)
+    public void loginSuccsesModel(String email, String password) {
+        //logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123!'");
+
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
 
 //Assert -->if element with text "logged in succses" is present
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         // app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
-    }
-
-    @Test
-    public void loginSuccsesModel() {
-        logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123!'");
-
-        app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("lolik@mail.ru", "Lolik123!");
-        app.getHelperUser().submit();
-
-//Assert -->if element with text "logged in succses" is present
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-        // app.getHelperUser().clickOkButton();
-        logger.info("Assert check is message 'Logged in success' ");
 
     }
 
 
-    @Test
-    public void loginWrongEmail() {
-        logger.info("Test data --> email:lolikmail.ru & password: 'Lolik123!'");
+    @Test(dataProvider = "wrongEmail", dataProviderClass = DataProviderUser.class)
+    public void loginWrongEmail(String email, String password) {
+       // logger.info("Test data --> email:lolikmail.ru & password: 'Lolik123!'");
 
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("lolikmail.ru", "Lolik123!");
+        app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
 
         Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
@@ -74,25 +75,25 @@ public class LoginTests extends TestBase {
         logger.info("Assert check Yalla button is active");
     }
 
-    @Test
-    public void loginWrongPassword() {
-        logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123'");
+    @Test (dataProvider = "wrongPassword", dataProviderClass = DataProviderUser.class)
+    public void loginWrongPassword(String email, String password) {
+        //logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123'");
 
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("lolik@mail.ru", "Lolik123");
+        app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
-        //Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Login or Password incorrect");
+        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
+       // Assert.assertEquals(app.getHelperUser().getMessage(), "Login or Password incorrect");
         logger.info("Assert check is message 'Login or Password incorrect' ");
 
     }
 
-    @Test
-    public void loginUnregisteredUser() {
-        logger.info("Test data --> email:'jhgfccgv@ru && password: Ljul!234'");
+    @Test (dataProvider = "loginUnregisteredUser", dataProviderClass = DataProviderUser.class)
+    public void loginUnregisteredUser(String email, String password) {
+        //logger.info("Test data --> email:'jhgfccgv@ru && password: Ljul!234'");
 
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("jhgfccgv@ru", "Ljul!234");
+        app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
         //Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
         Assert.assertEquals(app.getHelperUser().getMessage(), "\"Login or Password incorrect\"");
