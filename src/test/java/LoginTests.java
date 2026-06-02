@@ -22,7 +22,7 @@ public class LoginTests extends TestBase {
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
-        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
+        Assert.assertTrue(app.getHelperUser().getMessage().contains("Logged in success"));
         //app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
     }
@@ -37,7 +37,7 @@ public class LoginTests extends TestBase {
 
 //Assert -->if element with text "logged in succses" is present
       // Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
+        Assert.assertTrue(app.getHelperUser().getMessage().contains("Logged in success"));
          //app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
     }
@@ -51,7 +51,7 @@ public class LoginTests extends TestBase {
         app.getHelperUser().submit();
 
 //Assert -->if element with text "logged in succses" is present
-        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
+        Assert.assertTrue(app.getHelperUser().getMessage().contains("Logged in success"));
      //   Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         // app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
