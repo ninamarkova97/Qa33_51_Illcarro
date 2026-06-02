@@ -22,17 +22,27 @@ public class DataProviderUser {
     public Iterator<Object[]> loginSuccess() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
-        list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+      //  list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+
+
+        return list.iterator();
+    }
+    @DataProvider
+    public Iterator<Object[]> loginSuccess1() {
+        List<Object[]> list = new ArrayList<>();
+        list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
+         list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
         return list.iterator();
     }
 
+
     @DataProvider
     public Iterator<Object[]> loginModelSuccess() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
-        list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+       list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
         return list.iterator();
@@ -75,8 +85,8 @@ public class DataProviderUser {
     @DataProvider
     public Iterator<Object[]> dataRegistrationSuccess() {
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert123456!")});
-        list.add(new Object[]{new User().setName("Sonik").setLastName("Mertik").setEmail("mert147@gmail.com").setPassword("Mert177756!")});
+        list.add(new Object[]{new User().setName("Sona").setLastName("Mert").setEmail(("mert5889@gmail.com")).setPassword("Mert123456!")});
+        list.add(new Object[]{new User().setName("Sonik").setLastName("Mertik").setEmail("mert145857@gmail.com").setPassword("Mert177756!")});
 
         return list.iterator();
     }

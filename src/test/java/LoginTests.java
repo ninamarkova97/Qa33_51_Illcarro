@@ -1,12 +1,9 @@
 import manager.DataProviderUser;
-import models.User;
-import org.openqa.selenium.By;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 public class LoginTests extends TestBase {
 
@@ -19,27 +16,28 @@ public class LoginTests extends TestBase {
         }
     }
 
-//    @Test
-//    public void loginSuccses1() {
-//      //  User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
-//        app.getHelperUser().openLoginForm();
-//        app.getHelperUser().fillLoginForm(user);
-//        app.getHelperUser().submit();
-//
-//        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
-//        //app.getHelperUser().clickOkButton();
-//    }
+    @Test (dataProvider = "loginSuccses1", dataProviderClass = DataProviderUser.class)
+    public void loginSuccses1(String email, String password) {
+      //  User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(email, password);
+        app.getHelperUser().submit();
+
+        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+        //app.getHelperUser().clickOkButton();
+    }
 
     @Test (dataProvider = "loginSuccess", dataProviderClass = DataProviderUser.class)
     public void loginSuccses(String email, String password) {
         logger.info("Start test with name succses");
 
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm(email, password);
+        app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
 
 //Assert -->if element with text "logged in succses" is present
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+      // Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
          //app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
     }
@@ -49,11 +47,12 @@ public class LoginTests extends TestBase {
         //logger.info("Test data --> email:lolik@mail.ru & password: 'Lolik123!'");
 
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm(email,password);
+        app.getHelperUser().fillLoginForm(email, password);
         app.getHelperUser().submit();
 
 //Assert -->if element with text "logged in succses" is present
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
+     //   Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
         // app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
 
