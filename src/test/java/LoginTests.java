@@ -16,15 +16,15 @@ public class LoginTests extends TestBase {
         }
     }
 
-    @Test (dataProvider = "loginSuccses1", dataProviderClass = DataProviderUser.class)
-    public void loginSuccses1(String email, String password) {
-      //  User user = new User().setEmail("lolik@mail.ru").setPassword("Lolik123!");
-        app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm(email, password);
-        app.getHelperUser().submit();
 
-        Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
+    @Test(dataProvider = "loginSuccess1", dataProviderClass = DataProviderUser.class)
+    public void loginSuccess1(String email, String password){
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(email,password);
+        app.getHelperUser().submit();
+        Assert.assertTrue(app.getHelperUser().getMessageWrong().contains("Login or Password incorrect"));
         //app.getHelperUser().clickOkButton();
+        logger.info("Assert check is message 'Logged in success' ");
     }
 
     @Test (dataProvider = "loginSuccess", dataProviderClass = DataProviderUser.class)

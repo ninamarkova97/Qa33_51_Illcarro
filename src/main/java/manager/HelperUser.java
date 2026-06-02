@@ -28,8 +28,9 @@ public class HelperUser extends HelperBase {
     }
 
     public void submit() {
-        click(By.xpath("//button[@type='submit']"));
+       click(By.xpath("//button[@type='submit']"));
         //click(By.xpath("//button[text()='Y’alla!']"));
+
     }
 
     public String getMessage() {

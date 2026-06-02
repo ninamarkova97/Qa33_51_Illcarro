@@ -20,7 +20,11 @@ public class HelperBase {
     public void click(By locator) {
        // WebElement element = wd.findElement(locator);
       //  element.click();
-        wd.findElement(locator).click();
+        //wd.findElement(locator).click();
+        new WebDriverWait(wd, Duration.ofSeconds(10))
+                .ignoring(StaleElementReferenceException.class)
+                .until(ExpectedConditions.elementToBeClickable(locator))
+                .click();
     }
 
     public void type(By locator, String text){

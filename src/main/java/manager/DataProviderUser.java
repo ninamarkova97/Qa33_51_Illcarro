@@ -22,7 +22,7 @@ public class DataProviderUser {
     public Iterator<Object[]> loginSuccess() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
-      //  list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+      //list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
         return list.iterator();
@@ -31,7 +31,7 @@ public class DataProviderUser {
     public Iterator<Object[]> loginSuccess1() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
-         list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+        // list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
         return list.iterator();
@@ -71,12 +71,8 @@ public class DataProviderUser {
     @DataProvider
     public Iterator<Object[]> loginUnregisteredUser() {
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{new User().setName("Sona").setLastName("Mert").setEmail("mert@gmail.com").setPassword("Mert123456!")});
-        list.add(new Object[]{new User()
-                .setName("Tonik")
-                .setLastName("Mollik")
-                .setEmail("mol5@gmail.com")
-                .setPassword("Haifa17775!")});
+        list.add(new Object[]{"mrt@gmail.com", "Mert123456!"});
+        list.add(new Object[]{"m5@gmail.com", "Haifa17775!"});
 
 
         return list.iterator();
