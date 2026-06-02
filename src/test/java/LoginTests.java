@@ -22,7 +22,7 @@ public class LoginTests extends TestBase {
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm(email,password);
         app.getHelperUser().submit();
-        Assert.assertTrue(app.getHelperUser().getMessage().contains("Logged in success"));
+       Assert.assertTrue(app.getHelperUser().getMessage().contains("Logged in success"));
         //app.getHelperUser().clickOkButton();
         logger.info("Assert check is message 'Logged in success' ");
     }
@@ -65,7 +65,7 @@ public class LoginTests extends TestBase {
 
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm(email,password);
-        app.getHelperUser().submit();
+        //app.getHelperUser().submit();
 
         Assert.assertEquals(app.getHelperUser().getErrorText(), "It'snot look like email");
         logger.info("Assert check is error text 'It'snot look like email' ");

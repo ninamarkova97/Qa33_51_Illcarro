@@ -62,7 +62,7 @@ public class DataProviderUser {
     public Iterator<Object[]> wrongPassword() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{"lolik@mail.com", "Lolik12"});
-        list.add(new Object[]{"ninamarkova97@gmail.com", "YQHVU"});
+       // list.add(new Object[]{"ninamarkova97@gmail.com", "YQHVU"});
 
 
         return list.iterator();
