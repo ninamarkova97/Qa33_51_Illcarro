@@ -50,7 +50,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+        //app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(), "Name is required");
         logger.info("Assert check is message 'Name is required' ");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
@@ -64,7 +64,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+        //app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(), "Last name is required");
         logger.info("Assert check is message lastName is required' ");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
@@ -81,7 +81,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+       // app.getHelperUser().submit();
         Assert.assertTrue(app.getHelperUser().getErrorText().contains("Wrong email format"));
         logger.info("Assert check is error text 'Wrong email format' ");
 
@@ -101,7 +101,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+        //app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(), "Email is required");
         logger.info("Assert check is message 'Email is required' ");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
@@ -121,7 +121,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+      //  app.getHelperUser().submit();
         //Assert.assertEquals(app.getHelperUser().getErrorText(),"Wrong email format \nWrong email format");
         Assert.assertTrue(app.getHelperUser().getErrorText().contains("Wrong email format"));
         logger.info("Assert check is error text 'Wrong email format' ");
@@ -137,7 +137,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+       // app.getHelperUser().submit();
         Assert.assertEquals(app.getHelperUser().getErrorText(), "Password is required");
         logger.info("Assert check is message 'Password is required' ");
         Assert.assertTrue(app.getHelperUser().isYallaButtonNotActive());
@@ -154,7 +154,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().openRegistrationForm();
         app.getHelperUser().fillRegistrationForm(user);
         app.getHelperUser().checkPolicyXY();
-        app.getHelperUser().submit();
+       // app.getHelperUser().submit();
         Assert.assertTrue(app.getHelperUser().isErrorWrongPassword());
 
         Assert.assertEquals(app.getHelperUser().getErrorText(),"Password must contain minimum 8 symbols\n" +

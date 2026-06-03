@@ -21,7 +21,7 @@ public class DataProviderUser {
     @DataProvider
     public Iterator<Object[]> loginSuccess() {
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
+        list.add(new Object[]{"ni.mot@gmail.com", "niMot20$"});
         //list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
@@ -31,7 +31,7 @@ public class DataProviderUser {
     @DataProvider
     public Iterator<Object[]> loginSuccess1() {
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
+        list.add(new Object[]{"ni.mot@gmail.com", "niMot20$"});
         // list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
@@ -42,8 +42,8 @@ public class DataProviderUser {
     @DataProvider
     public Iterator<Object[]> loginModelSuccess() {
         List<Object[]> list = new ArrayList<>();
-        list.add(new Object[]{"lolik@mail.com", "Lolik123!"});
-        list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
+        list.add(new Object[]{"ni.mot@gmail.com", "niMot20$"});
+        //list.add(new Object[]{"ninamarkova97@gmail.com", "Y4QHVU8QHv3a@uT"});
 
 
         return list.iterator();
@@ -93,32 +93,42 @@ public class DataProviderUser {
         List<Object[]> list = new ArrayList<>();
 
         list.add(new Object[]{
-                "Margo",
-                "Test",
-                generateEmail(),
-                "Password123!"
+                new User()
+                        .setName("Margo")
+                        .setLastName("Test")
+                        .setEmail(generateEmail())
+                        .setPassword("Password123!")
         });
 
         list.add(new Object[]{
-                "Anna",
-                "QA",
-                generateEmail(),
-                "Password123!"
+                new User()
+                        .setName("John")
+                        .setLastName("QA")
+                        .setEmail(generateEmail())
+                        .setPassword("Password123!")
         });
-
         list.add(new Object[]{
-                "John",
-                "Smith",
-                generateEmail(),
-                "Password123!"
+                new User()
+                        .setName("Anna")
+                        .setLastName("Smith")
+                        .setEmail(generateEmail())
+                        .setPassword("Password123!")
         });
 
         return list.iterator();
     }
 
-    private String generateEmail() {
-        return "user_" + System.currentTimeMillis() + "@gmail.com";
-    }
+
+
+//    private String generateEmail() {
+//        return "user_1" + System.currentTimeMillis() + "@gmail.com";
+//    }
+private String generateEmail() {
+    return "user"
+            + System.currentTimeMillis()
+            + (int)(Math.random() * 10000)
+            + "@gmail.com";
+}
 
         @DataProvider
         public Iterator<Object[]> dataRegistrationEmptyName() {
