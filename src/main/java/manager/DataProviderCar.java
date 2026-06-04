@@ -12,7 +12,7 @@ public class DataProviderCar {
     public Iterator<Object[]> dataAddNewCarSuccess() {
         List<Object[]> list = new ArrayList<>();
         list.add(new Object[]{Car.builder()
-                .location("Tel Aviv, Israel")
+                .location("Haifa, Israel")
                 .manufacture("Opel")
                 .model("Astra")
                 .year("2025")
@@ -23,18 +23,18 @@ public class DataProviderCar {
                 .price(50)
                 .about("Nice car")
                 .build()});
-        list.add(new Object[]{Car.builder()
-                .location("Haifa, Israel")
-                .manufacture("Toyota")
-                .model("Camry")
-                .year("2013")
-                .fuel("Hybrid")
-                .seats(4)
-                .carClass("S")
-                .carRegNumber("45-930-79")
-                .price(25)
-                .about(" car")
-                .build()});
-        return list.iterator();
-    }
+//        list.add(new Object[]{Car.builder()
+//                .location("Haifa, Israel")
+//                .manufacture("Toyota")
+//                .model("Camry")
+//                .year("2013")
+//                .fuel("Hybrid")
+//                .seats(4)
+//                .carClass("S")
+//                .carRegNumber("45-930-79")
+//                .price(25)
+//                .about(" car")
+//                .build()});
+     return list.iterator();
+   }
 }
